@@ -1,0 +1,156 @@
+
+记得查看setup.cpp中初始化线程的优先级
+
+1、供RR调度算法使用
+    if(times==1){
+        programManager.executeThread(first_thread, nullptr, "first thread", 3);
+        programManager.executeThread(second_thread, nullptr, "second thread", 2);
+        programManager.executeThread(third_thread, nullptr, "third thread", 4);
+    }
+
+    if(times==20){
+        programManager.executeThread(forth_thread, nullptr, "forth thread", 3);
+    }
+
+    if(times==63){
+        programManager.executeThread(fifth_thread, nullptr, "fifth thread", 6);
+    }
+
+    if(times==88){
+        programManager.executeThread(sixth_thread, nullptr, "sixth thread", 2);
+    }
+
+2、供FIFO调度算法使用(强制修改ticks)
+    if(times==1){
+        int pid1=programManager.executeThread(first_thread, nullptr, "first thread", 3);
+        programManager.setThreadTicks(pid1, 15);
+        
+        int pid2=programManager.executeThread(second_thread, nullptr, "second thread", 2);
+        programManager.setThreadTicks(pid2, 22);
+
+        int pid3=programManager.executeThread(third_thread, nullptr, "third thread", 4);
+        programManager.setThreadTicks(pid3, 50);
+    }
+
+    if(times==20){
+        int pid5=programManager.executeThread(fifth_thread, nullptr, "fifth thread", 6);
+        programManager.setThreadTicks(pid5, 10);
+    }
+
+    if(times==63){
+        int pid4=programManager.executeThread(forth_thread, nullptr, "forth thread", 3);
+        programManager.setThreadTicks(pid4, 27);
+    }
+
+    if(times==88){
+        int pid6=programManager.executeThread(sixth_thread, nullptr, "sixth thread", 2);
+        programManager.setThreadTicks(pid6, 23);
+    }
+    
+3、供SJF调度算法使用
+    if(times==1){
+        int pid1=programManager.executeThread(first_thread, nullptr, "first thread", 3);
+        programManager.setThreadTicks(pid1, 50);
+        
+        int pid2=programManager.executeThread(second_thread, nullptr, "second thread", 2);
+        programManager.setThreadTicks(pid2, 22);
+
+        int pid3=programManager.executeThread(third_thread, nullptr, "third thread", 4);
+        programManager.setThreadTicks(pid3, 15);
+    }
+
+    if(times==20){
+        int pid4=programManager.executeThread(forth_thread, nullptr, "forth thread", 6);
+        programManager.setThreadTicks(pid4, 10);
+    }
+
+    if(times==30){
+        int pid5=programManager.executeThread(fifth_thread, nullptr, "fifth thread", 3);
+        programManager.setThreadTicks(pid5, 18);
+    }
+
+    if(times==88){
+        int pid6=programManager.executeThread(sixth_thread, nullptr, "sixth thread", 2);
+        programManager.setThreadTicks(pid6, 23);
+    }
+    
+4、供抢占式 SJF调度算法使用
+    if(times==1){
+        int pid1=programManager.executeThread(first_thread, nullptr, "first thread", 3);
+        programManager.setThreadTicks(pid1, 50);
+        
+        int pid2=programManager.executeThread(second_thread, nullptr, "second thread", 2);
+        programManager.setThreadTicks(pid2, 60);
+
+        int pid3=programManager.executeThread(third_thread, nullptr, "third thread", 4);
+        programManager.setThreadTicks(pid3, 40);
+    }
+
+    if(times==15){
+        int pid4=programManager.executeThread(forth_thread, nullptr, "forth thread", 6);
+        programManager.setThreadTicks(pid4, 10);
+    }
+
+    if(times==33){
+        int pid5=programManager.executeThread(fifth_thread, nullptr, "fifth thread", 3);
+        programManager.setThreadTicks(pid5, 18);
+    }
+
+    if(times==88){
+        int pid6=programManager.executeThread(sixth_thread, nullptr, "sixth thread", 2);
+        programManager.setThreadTicks(pid6, 23);
+    }
+    
+5、供PSA调度算法使用
+    if(times==1){
+        int pid1=programManager.executeThread(first_thread, nullptr, "first thread", 1);
+        programManager.setThreadTicks(pid1, 50);
+        
+        int pid2=programManager.executeThread(second_thread, nullptr, "second thread", 2);
+        programManager.setThreadTicks(pid2, 22);
+
+        int pid3=programManager.executeThread(third_thread, nullptr, "third thread", 4);
+        programManager.setThreadTicks(pid3, 15);
+    }
+
+    if(times==20){
+        int pid4=programManager.executeThread(forth_thread, nullptr, "forth thread", 1);
+        programManager.setThreadTicks(pid4, 10);
+    }
+
+    if(times==20){
+        int pid5=programManager.executeThread(fifth_thread, nullptr, "fifth thread", 6);
+        programManager.setThreadTicks(pid5, 18);
+    }
+
+    if(times==88){
+        int pid6=programManager.executeThread(sixth_thread, nullptr, "sixth thread", 5);
+        programManager.setThreadTicks(pid6, 23);
+    }
+    
+6、供抢占式 PSA调度算法使用
+    if(times==1){
+        int pid1=programManager.executeThread(first_thread, nullptr, "first thread", 2);
+        programManager.setThreadTicks(pid1, 50);
+        
+        int pid2=programManager.executeThread(second_thread, nullptr, "second thread", 3);
+        programManager.setThreadTicks(pid2, 22);
+
+        int pid3=programManager.executeThread(third_thread, nullptr, "third thread", 5);
+        programManager.setThreadTicks(pid3, 15);
+    }
+
+    if(times==20){
+        int pid4=programManager.executeThread(forth_thread, nullptr, "forth thread", 2);
+        programManager.setThreadTicks(pid4, 10);
+    }
+
+    if(times==20){
+        int pid5=programManager.executeThread(fifth_thread, nullptr, "fifth thread", 7);
+        programManager.setThreadTicks(pid5, 18);
+    }
+
+    if(times==88){
+        int pid6=programManager.executeThread(sixth_thread, nullptr, "sixth thread", 6);
+        programManager.setThreadTicks(pid6, 23);
+    }

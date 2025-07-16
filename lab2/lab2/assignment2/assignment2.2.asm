@@ -1,0 +1,112 @@
+org 0x7c00
+[bits 16]
+xor ax, ax ; eax = 0
+
+mov ds, ax
+mov ss, ax
+mov es, ax
+mov fs, ax
+mov gs, ax
+
+mov sp, 0x7c00
+mov ax, 0xb800
+mov gs, ax
+
+;将光标移动到（15,30）处
+mov ah, 0x02
+mov bh, 0x00
+mov dh, 15
+mov dl, 30
+int 0x10
+
+;利用中断实现学号的输出
+mov ah, 0x09
+mov al, '2'
+mov bh, 0x00
+mov bl, 0x01
+mov cx, 1
+int 0x10
+
+;移动光标到下一个位置（列数加1）
+inc dl
+mov ah,0x02
+int 0x10
+
+mov ah, 0x09
+mov al, '3'
+mov bh, 0x00
+mov bl, 0x02
+mov cx, 1
+int 0x10
+
+inc dl
+mov ah,0x02
+int 0x10
+
+mov ah, 0x09
+mov al, '3'
+mov bh, 0x00
+mov bl, 0x03
+mov cx, 1
+int 0x10
+
+inc dl
+mov ah,0x02
+int 0x10
+
+mov ah, 0x09
+mov al, '3'
+mov bh, 0x00
+mov bl, 0x04
+mov cx, 1
+int 0x10
+
+inc dl
+mov ah,0x02
+int 0x10
+
+mov ah, 0x09
+mov al, '6'
+mov bh, 0x00
+mov bl, 0x05
+mov cx, 1
+int 0x10
+
+inc dl
+mov ah,0x02
+int 0x10
+
+mov ah, 0x09
+mov al, '2'
+mov bh, 0x00
+mov bl, 0x06
+mov cx, 1
+int 0x10
+
+inc dl
+mov ah,0x02
+int 0x10
+
+mov ah, 0x09
+mov al, '6'
+mov bh, 0x00
+mov bl, 0x07
+mov cx, 1
+int 0x10
+
+inc dl
+mov ah,0x02
+int 0x10
+
+mov ah, 0x09
+mov al, '6'
+mov bh, 0x00
+mov bl, 0x08
+mov cx, 1
+int 0x10
+
+;死循环
+jmp $;
+times 510 - ($ - $$) db 0
+db 0x55, 0xaa
+
